@@ -1,0 +1,10 @@
+{
+  "name": "wpasupplicant-manager",
+  "dependencies": {},
+  "devDependencies": {},
+  "ambientDependencies": {
+    "bluebird": "github:DefinitelyTyped/DefinitelyTyped/bluebird/bluebird.d.ts#dd328830dddffbe19e9addd7cf8532cbd3600816",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#20e1eb9616922d382d918cc5a21870a9dbe255f5",
+    "path-exists": "github:DefinitelyTyped/DefinitelyTyped/path-exists/path-exists.d.ts#9b4dfcf8d8f234b8e1cf97e0a95d51e90d39c67e"
+  }
+}
