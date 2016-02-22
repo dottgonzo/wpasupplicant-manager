@@ -6,11 +6,11 @@ let WpaMan =new WMAN(__dirname+"/../wpa_supplicant.example.conf");
 
 
 
-WpaMan.add('bao','migrhtrthrcio').then(function(a){
+WpaMan.addwpa('bao','migrhtrthrcio').then(function(a){
 
-    console.log(WpaMan.list.length)    
-WpaMan.remove('bao').then(function(a){
+    console.log(WpaMan.listwpa.length)    
+WpaMan.removewpa('bao').then(function(a){
 
-        console.log(WpaMan.list.length)    
+        console.log(WpaMan.listwpa.length)    
 })
 })

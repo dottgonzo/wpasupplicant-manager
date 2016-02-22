@@ -81,8 +81,8 @@ function fromlinetowpanets(lines) {
 }
 
 class WpaMan {
-    file: string;
-    list: Iwpa[];
+    wpasupplicant_path: string;
+    listwpa: Iwpa[];
     conf = "";
     constructor(file: string) {
         if (!pathExists.sync(file)) {
@@ -93,17 +93,17 @@ class WpaMan {
 
         let obj = fromlinetowpanets(wpafilelines);
         this.conf = obj.conf;
-        this.list = obj.list;
+        this.listwpa = obj.list;
 
-        this.file = file;
+        this.wpasupplicant_path = file;
     }
 
-    add(essid: string, password: string, priority?: number) {
+    addwpa(essid: string, password: string, priority?: number) {
         let exist;
         let nets = [];
-        let list = this.list;
+        let list = this.listwpa;
         let conf = this.conf;
-        let file = this.file;
+        let file = this.wpasupplicant_path;
         return new Promise(function(resolve, reject) {
             if (password.length < 8) {
                 reject("passphrase must be 8 characters minimum")
@@ -152,11 +152,11 @@ class WpaMan {
 
     }
 
-    remove(ssid: string) {
+    removewpa(ssid: string) {
 
-        let list = this.list;
+        let list = this.listwpa;
         let conf = this.conf;
-        let file = this.file;
+        let file = this.wpasupplicant_path;
 
         return new Promise(function(resolve, reject) {
 

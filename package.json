@@ -1,6 +1,6 @@
 {
   "name": "wpasupplicant-manager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "wpa_supplicant.conf manager",
   "main": "index.js",
   "scripts": {
