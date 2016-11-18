@@ -18,7 +18,7 @@ function writefile(file, conf, list: Iwpa[]) {
         conf = conf + "\n" + "network={";
         for (let o = 0; o < Object.keys(list[i]).length; o++) {
 
-            conf = conf + "\n" + Object.keys(list[i])[o] + "=" + list[i][Object.keys(list[i])[o]];
+            conf = conf + "\n" + Object.keys(list[i])[o] + '="' + list[i][Object.keys(list[i])[o]]+'"';
 
 
         }
@@ -45,23 +45,23 @@ function fromlinetowpanets(lines) {
         let checkline = lines[i].replace(/\t/g, "");
 
 
-        if (checkline[0] != "#" || (checkline[0] == "#" && checkline[3] == "k" && checkline.split("psk").length == 2)) {
-            if (checkline.split("etwork").length == 2 && endnetwork) {
+        if (checkline[0] !== "#" || (checkline[0] === "#" && checkline[3] === "k" && checkline.split("psk").length === 2)) {
+            if (checkline.split("etwork").length === 2 && endnetwork) {
                 start = true;
                 firstnet = true;
                 endnetwork = false;
                 net = {};
-            } else if (checkline.replace(/ /g, "")[0] == "}" && firstnet) {
+            } else if (checkline.replace(/ /g, "")[0] === "}" && firstnet) {
                 endnetwork = true;
                 firstnet = false;
                 nets.push(net);
 
-            } else if (firstnet && checkline.split("=").length == 2) {
+            } else if (firstnet && checkline.split("=").length === 2) {
 
-                net[checkline.split("=")[0].replace(/ /g, "")] = checkline.split("=")[1];
+                net[checkline.split("=")[0].replace(/ /g, "")] = checkline.split("=")[1].replace(/"/g, "");
 
-            } else if (!start && checkline != "") {
-                if (conf != "") {
+            } else if (!start && checkline !== "") {
+                if (conf !== "") {
                     conf = (conf + "\n" + checkline);
                 } else {
                     conf = (checkline);
@@ -80,7 +80,7 @@ function fromlinetowpanets(lines) {
 
 }
 
-class WpaMan {
+export default class WpaMan {
     wpasupplicant_path: string;
     listwpa: Iwpa[];
     conf = "";
@@ -121,7 +121,7 @@ class WpaMan {
                     for (let i = 0; i < list.length; i++) {
                         exist = false;
                         for (let l = 0; l < newnets.length; l++) {
-                            if (list[i].ssid == newnets[l].ssid) {
+                            if (list[i].ssid === newnets[l].ssid) {
                                 exist = true;
                             }
                         }
@@ -166,7 +166,7 @@ class WpaMan {
             for (let i = 0; i < list.length; i++) {
 
                 
-                if (list[i].ssid != '"' + ssid + '"') {
+                if (list[i].ssid !== '"' + ssid + '"') {
                     relist.push(list[i]);
                 } else {
                     exists = true;
@@ -191,4 +191,4 @@ class WpaMan {
 
 }
 
-export = WpaMan
+

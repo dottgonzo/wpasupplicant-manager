@@ -1,6 +1,6 @@
 {
   "name": "wpasupplicant-manager",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "wpa_supplicant.conf manager",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,8 @@
     "gulp-tag-version": "^1.3.0",
     "gulp-typescript": "^2.11.0",
     "gulp-util": "^3.0.7",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "typings": "^2.0.0"
   },
   "dependencies": {
     "bluebird": "^3.3.1",
