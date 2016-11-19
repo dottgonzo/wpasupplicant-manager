@@ -18,7 +18,7 @@ function writefile(file, conf, list: Iwpa[]) {
         conf = conf + "\n" + "network={";
         for (let o = 0; o < Object.keys(list[i]).length; o++) {
 
-            conf = conf + "\n" + Object.keys(list[i])[o] + '="' + list[i][Object.keys(list[i])[o]]+'"';
+            conf = conf + "\n" + Object.keys(list[i])[o] + '="' + list[i][Object.keys(list[i])[o]] + '"';
 
 
         }
@@ -29,6 +29,7 @@ function writefile(file, conf, list: Iwpa[]) {
 
 
     fs.writeFileSync(file, conf, { encoding: "utf-8" });
+    child_process.execSync('sync')
 
 }
 
@@ -104,11 +105,11 @@ export default class WpaMan {
         let list = this.listwpa;
         let conf = this.conf;
         let file = this.wpasupplicant_path;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             if (password.length < 8) {
                 reject("passphrase must be 8 characters minimum")
             } else {
-                child_process.exec("wpa_passphrase \"" + essid + "\" \"" + password + "\"", function(err, stdout, stderr) {
+                child_process.exec("wpa_passphrase \"" + essid + "\" \"" + password + "\"", function (err, stdout, stderr) {
                     if (err || stderr) {
                         console.log(err);
                         console.log(stderr);
@@ -158,14 +159,14 @@ export default class WpaMan {
         let conf = this.conf;
         let file = this.wpasupplicant_path;
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
 
             let relist = <Iwpa[]>[];
             let exists = false;
 
             for (let i = 0; i < list.length; i++) {
 
-                
+
                 if (list[i].ssid !== '"' + ssid + '"') {
                     relist.push(list[i]);
                 } else {
