@@ -17,8 +17,13 @@ function writefile(file, conf, list: Iwpa[]) {
     for (let i = 0; i < list.length; i++) {
         conf = conf + "\n" + "network={";
         for (let o = 0; o < Object.keys(list[i]).length; o++) {
+            if (Object.keys(list[i])[o] === 'psk') {
+                conf = conf + "\n" + Object.keys(list[i])[o] + '=' + list[i][Object.keys(list[i])[o]];
 
-            conf = conf + "\n" + Object.keys(list[i])[o] + '="' + list[i][Object.keys(list[i])[o]] + '"';
+            } else {
+                conf = conf + "\n" + Object.keys(list[i])[o] + '="' + list[i][Object.keys(list[i])[o]] + '"';
+
+            }
 
 
         }
