@@ -121,7 +121,7 @@ export default class WpaMan {
                         reject("error on wpa_passphrase");
                     }
 
-                    let wpafilelines = stdout.toString("utf-8").split('\n');
+                    let wpafilelines = stdout.split('\n');
                     let newnets = fromlinetowpanets(wpafilelines).list;
 
                     for (let i = 0; i < list.length; i++) {
