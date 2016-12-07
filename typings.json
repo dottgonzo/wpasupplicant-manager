@@ -1,11 +1,11 @@
 {
-  "globalDevDependencies": {
-    "chai": "registry:dt/chai#3.4.0+20160601211834",
-    "mocha": "registry:dt/mocha#2.2.5+20161028141524",
-    "node": "registry:dt/node#6.0.0+20161110151007"
-  },
   "globalDependencies": {
     "bluebird": "registry:dt/bluebird#3.0.0+20161007114152",
     "path-exists": "registry:dt/path-exists#1.0.0+20160316155526"
+  },
+  "globalDevDependencies": {
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "mocha": "registry:dt/mocha#2.2.5+20161028141524",
+    "node": "registry:dt/node#6.0.0+20161121110008"
   }
 }

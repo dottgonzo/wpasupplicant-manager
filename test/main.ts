@@ -45,7 +45,7 @@ describe('wifilist', function () {
 
     it('can add a wpa network', function (done) {
 
-        WpaMan.addwpa('bao', 'migrhtrthrcio').then(function (a) {
+        WpaMan.addwpa('zbao', 'migrhtrthrcio').then(function (a) {
             expect(a).to.be.ok
 
             done()
