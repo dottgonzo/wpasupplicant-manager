@@ -1,6 +1,6 @@
 {
   "name": "wpasupplicant-manager",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "wpa_supplicant.conf manager",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "wpa_supplicant"
   ],
   "author": "Dario Caruso",
-  "license": "GPL-3.0",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/dottgonzo/wpasupplicant-manager/issues"
   },

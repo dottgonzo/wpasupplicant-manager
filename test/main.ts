@@ -65,6 +65,7 @@ describe('wifilist', function () {
 
             done()
         }).catch(function (err) {
+            console.log(err)
             expect(err).to.not.exist
             done()
 

@@ -41,7 +41,7 @@ function writefile(file, conf, list: Iwpa[]) {
 
 function fromlinetowpanets(lines) {
     let conf = "";
-    let nets = <Iwpa[]>[];
+    const nets: Iwpa[] = [];
     let net;
     let start = false;
     let firstnet = false;
@@ -95,9 +95,9 @@ export default class WpaMan {
             throw Error("path exists not founded");
         }
 
-        let wpafilelines = fs.readFileSync(file, "utf-8").split("\n");
+        const wpafilelines = fs.readFileSync(file, "utf-8").split("\n");
 
-        let obj = fromlinetowpanets(wpafilelines);
+        const obj = fromlinetowpanets(wpafilelines);
         this.conf = obj.conf;
         this.listwpa = obj.list;
 
@@ -106,10 +106,10 @@ export default class WpaMan {
 
     addwpa(essid: string, password: string, priority?: number) {
         let exist;
-        let nets = [];
-        let list = this.listwpa;
-        let conf = this.conf;
-        let file = this.wpasupplicant_path;
+        const nets = [];
+        const list = this.listwpa;
+        const conf = this.conf;
+        const file = this.wpasupplicant_path;
         return new Promise(function (resolve, reject) {
             if (password.length < 8) {
                 reject("passphrase must be 8 characters minimum")
@@ -161,36 +161,37 @@ export default class WpaMan {
     removewpa(ssid: string) {
 
         let list = this.listwpa;
-        let conf = this.conf;
-        let file = this.wpasupplicant_path;
+        const conf = this.conf;
+        const file = this.wpasupplicant_path;
+
 
         return new Promise(function (resolve, reject) {
 
-            let relist = <Iwpa[]>[];
+            let relist: Iwpa[] = [];
             let exists = false;
 
             for (let i = 0; i < list.length; i++) {
 
-
-                if (list[i].ssid !== '"' + ssid + '"') {
-                    relist.push(list[i]);
+                if (list[i].ssid !== ssid) {
+                    relist.push(list[i])
                 } else {
+
                     exists = true;
 
                 }
             }
 
             if (exists) {
-                list.length = 0;
-                for (let i = 0; i < relist.length; i++) {
-                    list.push(relist[i])
-                }
 
+                list = relist
                 writefile(file, conf, list);
+                resolve(true)
+
+            } else {
+                reject('network not founded')
 
             }
 
-            resolve(true)
 
         })
     }
